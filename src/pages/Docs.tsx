@@ -13,36 +13,131 @@ import {
 
 const sidebarItems = [
   { id: 'introduction', label: 'Introduction', icon: <Layers size={18} /> },
-  { id: 'stones', label: 'Intelligence Stones', icon: <Cpu size={18} /> },
-  { id: 'vigil', label: 'VIGIL Awareness', icon: <Eye size={18} /> },
-  { id: 'arc', label: 'The ARC Narrative', icon: <Activity size={18} /> },
   { id: 'integration', label: 'Integration Guide', icon: <Zap size={18} /> },
+  { id: 'arc', label: 'The ARC (The Path)', icon: <Activity size={18} /> },
+  { id: 'stones', label: 'VIGIL Stones (The Body)', icon: <Cpu size={18} /> },
   { id: 'api', label: 'API Reference', icon: <Code size={18} /> },
 ];
 
 const content = {
   introduction: {
-    title: 'Introduction to The Singularity',
-    body: `The Singularity is a unified intelligence ecosystem designed to bridge the gap between reactive AI models and sentient-like digital partners. 
-    It operates on three pillars: The Soul (Stones), The Body (VIGIL), and The Path (ARC).`,
-    code: `# Example: Initializing the Singularity Core\nfrom singularity import Core\n\nsingularity = Core(api_key="your_key")\nsingularity.awaken()`,
+    title: 'The Awareness Layer',
+    body: `VIGIL and THE ARC form the awareness layers of an AI assistant. While traditional LLMs are reactive, the Singularity ecosystem enables an assistant that understands the narrative trajectory and the current behavioral state of the user.
+
+┌─────────────────────────────────────────────────────────────┐
+│  Layer 1 — Narrative (THE ARC)                              │
+│  → Where is the user going? What decisions were made?       │
+│    Which topics are resurfacing?                            │
+├─────────────────────────────────────────────────────────────┤
+│  Layer 2 — User State (TideStone)                           │
+│  → How is the user feeling right now? High energy?          │
+│    Focused? Tired?                                          │
+├─────────────────────────────────────────────────────────────┤
+│  Layer 3 — Goals (CompassStone)                             │
+│  → What are the user's goals? Is progress being made?       │
+├─────────────────────────────────────────────────────────────┤
+│  Layer 4 — Recurrence (EmberStone)                          │
+│  → What topics does the user keep returning to?             │
+│    Which ones are "hot"?                                    │
+├─────────────────────────────────────────────────────────────┤
+│  Layer 5 — Self-Awareness (MirrorStone)                     │
+│  → How confident is the assistant about this domain?        │
+│    Is it using hedging language?                            │
+└─────────────────────────────────────────────────────────────┘`,
+    code: `# The core loop logic:
+# 1. OBSERVE: Every message/response is fed to the stones.
+# 2. CONSULT: Before the next LLM call, stones provide directives.
+# 3. GENERATE: LLM uses the enriched system prompt.`,
   },
-  stones: {
-    title: 'Intelligence Stones (The Soul)',
-    body: `Stones are the cognitive building blocks of Friday. They capture long-term identity, communication style, and user preferences.
-    \n• MindStone: Communication style EMA profiling.\n• BondStone: Long-term world modeling and memory decay.`,
-    code: `from stones import MindStone\n\nmind = MindStone()\nmind.observe(user_input="Keep it brief.", assistant_output="Sure.")\nprint(mind.get_style_directive())`,
-  },
-  vigil: {
-    title: 'VIGIL Awareness (The Body)',
-    body: `VIGIL provides real-time situational awareness. It senses user fatigue, tracks goals, and identifies unresolved "embers" in the conversation.
-    \n• Ember: Unresolved topic tracker with heat-based decay.\n• Tide: Cognitive load and energy reader.`,
-    code: `from vigil import Ember\n\nember = Ember()\nember.observe("Can we finish that Python script later?")\n# Heat increases for "Python script" topic`,
+  integration: {
+    title: 'Step-by-Step Integration',
+    body: `Integrating VIGIL Stones into your existing AI assistant is straightforward. Every module is a standalone Python file with zero external dependencies.
+
+1. Copy the .py files into your project directory.
+2. Initialize the stones in your assistant's constructor.
+3. Call .observe() after each message.
+4. Call .consult() before generating a response to enrich your prompt.`,
+    code: `from vigilstones.the_arc import TheArc, TurnRecord
+from vigilstones.tide_stone import TideStone
+from vigilstones.compass_stone import CompassStone
+
+class Assistant:
+    def __init__(self):
+        self.arc = TheArc(path="data/arc.json")
+        self.tide = TideStone()
+        self.compass = CompassStone()
+
+    def chat(self, user_msg):
+        # Step 1: Observe user message
+        self.tide.observe_user(user_msg)
+        self.compass.observe(user_msg, "")
+        
+        # Step 2: Build enriched prompt
+        prompt = "You are a helpful assistant."
+        if ctx := self.arc.consult(user_msg):
+            prompt += "\\n\\n" + ctx
+        if d := self.tide.get_state_directive():
+            prompt += "\\n\\n" + d
+
+        # Step 3: LLM Call
+        response = llm.call(prompt, user_msg)
+        
+        # Step 4: Observe assistant response
+        self.arc.absorb(TurnRecord(role="assistant", content=response))
+        return response`,
   },
   arc: {
-    title: 'The ARC (The Path)',
-    body: `The ARC is the temporal layer that connects distant sessions. It identifies "Ghost Threads" and tracks "Decision Arcs" to provide a sense of continuity.`,
-    code: `from the_arc import ArcCore\n\narc = ArcCore()\nconsult = arc.consult("Project Vision")\nif consult.is_recurring:\n    print("Welcome back to your project.")`,
+    title: 'THE ARC — Long-Term Narrative',
+    body: `THE ARC tracks the "story" dimension of the interaction. It organizes turns into Episodes and monitors Decision Arcs.
+
+• DECISION Detection: Automatically identifies choices like "I'll use React Native".
+• GHOST THREADS: Detects recurring topics across long intervals (e.g., 30 days) and resurfaces previous context.
+• REVISION: Tracks when users change their mind about previous decisions.
+• FRUSTRATION: Identifies patterns of failure or recurring errors.`,
+    code: `from the_arc import TheArc, TurnRecord
+
+arc = TheArc()
+
+# Consult the narrative before responding
+context = arc.consult("React Native mobile development")
+
+if "GHOST THREAD" in context:
+    # Resurface context from a session 2 months ago
+    system_prompt += "\\n" + context`,
+  },
+  stones: {
+    title: 'VIGIL Stones — Real-Time Body',
+    body: `The VIGIL layer senses the "now". 
+
+• TideStone: Reads energy, pace, and focus. If a user is typing fast at 1 AM with short messages, Tide suggests keeping responses brief.
+• CompassStone: Extracts session and project goals. It knows "Why" the user is asking "What".
+• EmberStone: Tracks topic heat. Topics gain heat (+0.15) on recurrence and decay (-0.02/day) with silence.
+• MirrorStone: Scans assistant output for hedging (e.g., "I think", "maybe"). Builds a domain-specific confidence model.`,
+    code: `# Ember Heat Lifecycle Example:
+# Topic appears -> HEAT 0.30
+# Recurrence    -> HEAT +0.15
+# Silent day    -> HEAT -0.02
+# "Done" signal -> HEAT -0.30 (Resolved)`,
+  },
+  api: {
+    title: 'API Reference',
+    body: `Every stone follows a consistent interface.
+
+| Module | Observe Method | Consult Method |
+|:---|:---|:---|
+| THE ARC | .absorb(TurnRecord) | .consult(query) |
+| TideStone | .observe_user(text) | .get_state_directive() |
+| CompassStone | .observe(user, ai) | .get_goal_directive() |
+| EmberStone | .observe(user, ai) | .get_active_context() |
+| MirrorStone | .observe(user, ai) | .get_mirror_directive() |`,
+    code: `# Common stats structure returned by .get_stats():
+{
+    "total_turns": 142,
+    "active_goals": 3,
+    "hot_topics": ["asyncio", "react-native"],
+    "avg_confidence": 0.88,
+    "user_energy": "high"
+}`,
   },
 };
 
@@ -50,9 +145,9 @@ export default function Docs() {
   const [activeTab, setActiveTab] = useState('introduction');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const currentIndex = sidebarItems.findIndex(item => item.id === activeTab);
-
-  const activeContent = content[activeTab as keyof typeof content] || content.introduction;
   
+  const activeContent = content[activeTab as keyof typeof content] || content.introduction;
+
   const handleNext = () => {
     if (currentIndex < sidebarItems.length - 1) {
       setActiveTab(sidebarItems[currentIndex + 1].id);
