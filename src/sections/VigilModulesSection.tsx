@@ -46,7 +46,8 @@ export default function VigilModulesSection() {
         <ScrollReveal stagger={0.15}>
           <p className="section-label text-accent-ember mb-6">04 / THE AWARENESS LAYER</p>
 
-          <h2 className="font-display-section text-text-primary">VIGIL</h2>
+          <h2 className="font-display-section text-text-primary">VIGIL Operational Core</h2>
+          <p className="font-label text-accent-ember mt-2">THE BODY: PROCESSING & INTERACTION</p>
 
           <p className="font-body-large text-text-secondary italic mt-4 mb-16">
             Not memory. Not personality. Not another chatbot wrapper. Something that lives between

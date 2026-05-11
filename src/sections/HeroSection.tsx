@@ -52,11 +52,11 @@ export default function HeroSection() {
           THE AWARENESS LAYER
         </p>
 
-        <h1 ref={titleRef} className="font-display-hero text-text-primary text-5xl md:text-7xl opacity-0 translate-y-4 leading-tight">
-          THE COGNITIVE SINGULARITY FRAMEWORK
+        <h1 ref={titleRef} className="font-display-hero text-text-primary text-6xl md:text-8xl opacity-0 translate-y-4 tracking-tight">
+          THE SINGULARITY
         </h1>
-        <p className="font-display-subsection text-text-secondary mt-4 opacity-0 translate-y-4" ref={subtitle2Ref}>
-          The Awareness Layer
+        <p className="font-display-subsection text-text-secondary mt-4 opacity-0 translate-y-4 tracking-[0.2em] uppercase text-sm" ref={subtitle2Ref}>
+          The Unified Intelligence Ecosystem
         </p>
 
         <p className="font-body-large text-text-secondary italic mt-8 opacity-0 translate-y-4 max-w-2xl mx-auto" ref={taglineRef}>

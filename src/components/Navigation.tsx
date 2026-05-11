@@ -7,8 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const navLinks = [
   { label: 'Intelligence Stones', href: '#stones' },
-  { label: 'VIGIL', href: '#vigil' },
-  { label: 'Ecosystem', href: '#relationship' },
+  { label: 'VIGIL (The Body)', href: '#vigil' },
+  { label: 'Singularity Ecosystem', href: '#relationship' },
   { label: 'Vision', href: '#vision' },
   { label: 'GitHub', href: 'https://github.com/codedbyOzzy/ProjectVIGIL', external: true },
 ];
@@ -75,7 +75,7 @@ export default function Navigation() {
           onClick={(e) => handleNavClick(e, '#hero')}
           className="font-mono text-sm font-medium tracking-[4px] uppercase text-text-primary hover:text-accent-ember transition-colors duration-200"
         >
-          VIGIL
+          SINGULARITY
         </a>
 
         {/* Desktop nav */}

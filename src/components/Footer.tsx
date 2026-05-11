@@ -12,12 +12,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Brand */}
           <div>
-            <span className="font-label text-text-primary tracking-[4px]">VIGIL</span>
+            <span className="font-label text-text-primary tracking-[4px]">THE SINGULARITY</span>
             <p className="font-body-small text-text-dim mt-3">
-              The Awareness Layer for AI Assistants
+              The Awareness Ecosystem for AI Assistants
             </p>
             <p className="font-body-small text-text-dim mt-1">
-              Built on Intelligence Stones
+              Powered by Intelligence Stones & VIGIL
             </p>
           </div>
 
@@ -27,8 +27,8 @@ export default function Footer() {
             <div className="flex flex-col gap-2">
               {[
                 { label: 'Intelligence Stones', href: '#stones' },
-                { label: 'VIGIL Modules', href: '#vigil' },
-                { label: 'The Ecosystem', href: '#relationship' },
+                { label: 'VIGIL (The Body)', href: '#vigil' },
+                { label: 'The Singularity', href: '#relationship' },
                 { label: 'Roadmap', href: '#roadmap' },
               ].map((link) => (
                 <a
@@ -78,7 +78,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-[rgba(240,236,228,0.06)] mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <span className="font-body-small text-text-dim">Apache 2.0 License</span>
-          <span className="font-body-small text-text-dim">2026 VIGIL Project</span>
+          <span className="font-body-small text-text-dim">2026 The Singularity Project</span>
         </div>
       </div>
     </footer>
