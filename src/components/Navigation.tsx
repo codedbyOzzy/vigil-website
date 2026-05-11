@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -10,6 +11,7 @@ const navLinks = [
   { label: 'VIGIL (The Body)', href: '#vigil' },
   { label: 'Singularity Ecosystem', href: '#relationship' },
   { label: 'Vision', href: '#vision' },
+  { label: 'Documentation', href: '/docs', isRouterLink: true },
   { label: 'GitHub', href: 'https://github.com/codedbyOzzy/ProjectVIGIL', external: true },
 ];
 
@@ -47,8 +49,8 @@ export default function Navigation() {
     };
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, external?: boolean) => {
-    if (external) return;
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, external?: boolean, isRouterLink?: boolean) => {
+    if (external || isRouterLink) return;
     e.preventDefault();
     const el = document.querySelector(href);
     if (el) {
@@ -81,23 +83,33 @@ export default function Navigation() {
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target={link.external ? '_blank' : undefined}
-              rel={link.external ? 'noopener noreferrer' : undefined}
-              onClick={(e) => handleNavClick(e, link.href, link.external)}
-              className={`font-body-small transition-colors duration-200 relative pb-1 ${
-                isActive(link.href)
-                  ? 'text-text-primary'
-                  : 'text-text-secondary hover:text-text-primary'
-              }`}
-            >
-              {link.label}
-              {isActive(link.href) && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-ember" />
-              )}
-            </a>
+            link.isRouterLink ? (
+              <Link
+                key={link.label}
+                to={link.href}
+                className="font-body-small transition-colors duration-200 text-text-secondary hover:text-text-primary"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                onClick={(e) => handleNavClick(e, link.href, link.external)}
+                className={`font-body-small transition-colors duration-200 relative pb-1 ${
+                  isActive(link.href)
+                    ? 'text-text-primary'
+                    : 'text-text-secondary hover:text-text-primary'
+                }`}
+              >
+                {link.label}
+                {isActive(link.href) && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-ember" />
+                )}
+              </a>
+            )
           ))}
         </div>
 

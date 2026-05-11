@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import HeroSection from './sections/HeroSection';
@@ -12,26 +13,45 @@ import RoadmapSection from './sections/RoadmapSection';
 import VisionSection from './sections/VisionSection';
 import CTASection from './sections/CTASection';
 import ComparisonSection from './sections/ComparisonSection';
+import Docs from './pages/Docs';
+
+function HomePage() {
+  return (
+    <>
+      <HeroSection />
+      <ProblemSection />
+      <IntelligenceStonesSection />
+      <ArchitectureSection />
+      <VigilModulesSection />
+      <IntegrationSection />
+      <RelationshipSection />
+      <ComparisonSection />
+      <FridaySection />
+      <RoadmapSection />
+      <VisionSection />
+      <CTASection />
+    </>
+  );
+}
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-surface-void">
-      <Navigation />
-      <main>
-        <HeroSection />
-        <ProblemSection />
-        <IntelligenceStonesSection />
-        <ArchitectureSection />
-        <VigilModulesSection />
-        <IntegrationSection />
-        <RelationshipSection />
-        <ComparisonSection />
-        <FridaySection />
-        <RoadmapSection />
-        <VisionSection />
-        <CTASection />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-surface-void">
+        <Routes>
+          {/* Main Site Route */}
+          <Route path="/" element={
+            <>
+              <Navigation />
+              <main><HomePage /></main>
+              <Footer />
+            </>
+          } />
+
+          {/* Docs Route (No shared nav/footer for full-screen doc feel) */}
+          <Route path="/docs" element={<Docs />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
