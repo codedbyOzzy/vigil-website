@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { HashRouter, Routes, Route } from 'react-router';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import QuickStartModal from './components/QuickStartModal';
 import HeroSection from './sections/HeroSection';
 import ProblemSection from './sections/ProblemSection';
 import IntelligenceStonesSection from './sections/IntelligenceStonesSection';
@@ -14,40 +16,39 @@ import VisionSection from './sections/VisionSection';
 import CTASection from './sections/CTASection';
 import ComparisonSection from './sections/ComparisonSection';
 
-function HomePage() {
-  return (
-    <>
-      <HeroSection />
-      <ProblemSection />
-      <IntelligenceStonesSection />
-      <ArchitectureSection />
-      <VigilModulesSection />
-      <IntegrationSection />
-      <RelationshipSection />
-      <ComparisonSection />
-      <FridaySection />
-      <RoadmapSection />
-      <VisionSection />
-      <CTASection />
-    </>
-  );
-}
-
 export default function App() {
+  const [isQuickStartOpen, setIsQuickStartOpen] = useState(false);
+
+  const onGetStarted = () => setIsQuickStartOpen(true);
+
   return (
     <HashRouter>
       <div className="min-h-screen bg-surface-void">
         <Routes>
           <Route path="/" element={
             <>
-              <Navigation />
-              <main><HomePage /></main>
+              <Navigation onGetStarted={onGetStarted} />
+              <main>
+                <HeroSection onGetStarted={onGetStarted} />
+                <ProblemSection />
+                <IntelligenceStonesSection />
+                <ArchitectureSection />
+                <VigilModulesSection />
+                <IntegrationSection />
+                <RelationshipSection />
+                <ComparisonSection />
+                <FridaySection />
+                <RoadmapSection />
+                <VisionSection />
+                <CTASection onGetStarted={onGetStarted} />
+              </main>
               <Footer />
+              <QuickStartModal 
+                isOpen={isQuickStartOpen} 
+                onClose={() => setIsQuickStartOpen(false)} 
+              />
             </>
           } />
-
-          {/* Docs Route (No shared nav/footer for full-screen doc feel) */}
-          <Route path="/docs" element={<Docs />} />
         </Routes>
       </div>
     </HashRouter>

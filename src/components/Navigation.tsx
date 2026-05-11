@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -9,13 +8,16 @@ gsap.registerPlugin(ScrollTrigger);
 const navLinks = [
   { label: 'Intelligence Stones', href: '#stones' },
   { label: 'VIGIL (The Body)', href: '#vigil' },
-  { label: 'Singularity Ecosystem', href: '#relationship' },
+  { label: 'Ecosystem', href: '#relationship' },
   { label: 'Vision', href: '#vision' },
-  { label: 'Documentation', href: '/docs', isRouterLink: true },
   { label: 'GitHub', href: 'https://github.com/codedbyOzzy/ProjectVIGIL', external: true },
 ];
 
-export default function Navigation() {
+interface NavigationProps {
+  onGetStarted?: () => void;
+}
+
+export default function Navigation({ onGetStarted }: NavigationProps) {
   const [activeSection, setActiveSection] = useState('');
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -49,8 +51,8 @@ export default function Navigation() {
     };
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, external?: boolean, isRouterLink?: boolean) => {
-    if (external || isRouterLink) return;
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, external?: boolean) => {
+    if (external) return;
     e.preventDefault();
     const el = document.querySelector(href);
     if (el) {
@@ -83,72 +85,72 @@ export default function Navigation() {
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            link.isRouterLink ? (
-              <Link
-                key={link.label}
-                to={link.href}
-                className="font-body-small transition-colors duration-200 text-text-secondary hover:text-text-primary"
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}
-                onClick={(e) => handleNavClick(e, link.href, link.external)}
-                className={`font-body-small transition-colors duration-200 relative pb-1 ${
-                  isActive(link.href)
-                    ? 'text-text-primary'
-                    : 'text-text-secondary hover:text-text-primary'
-                }`}
-              >
-                {link.label}
-                {isActive(link.href) && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-ember" />
-                )}
-              </a>
-            )
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+              onClick={(e) => handleNavClick(e, link.href, link.external)}
+              className={`font-label text-[10px] tracking-widest uppercase transition-colors duration-200 ${
+                isActive(link.href) ? 'text-accent-stone' : 'text-text-secondary hover:text-text-primary'
+              }`}
+            >
+              {link.label}
+            </a>
           ))}
+          <button 
+            onClick={onGetStarted}
+            className="ml-4 px-5 py-2 bg-text-primary text-surface-void rounded-full font-label text-[10px] tracking-widest uppercase hover:brightness-110 transition-all"
+          >
+            Get Started
+          </button>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile menu toggle */}
         <button
           className="md:hidden text-text-primary p-2"
-          onClick={() => setMobileOpen(true)}
-          aria-label="Open menu"
+          onClick={() => setMobileOpen(!mobileOpen)}
         >
-          <Menu size={24} />
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
 
-      {/* Mobile overlay */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-[60] bg-surface-deep flex flex-col items-center justify-center">
-          <button
-            className="absolute top-4 right-4 text-text-primary p-2"
-            onClick={() => setMobileOpen(false)}
-            aria-label="Close menu"
+      {/* Mobile nav overlay */}
+      <div
+        className={`fixed inset-0 z-[60] bg-surface-void/98 flex flex-col items-center justify-center gap-8 transition-all duration-500 md:hidden ${
+          mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <button
+          className="absolute top-6 right-6 text-text-primary p-2"
+          onClick={() => setMobileOpen(false)}
+        >
+          <X size={28} />
+        </button>
+        {navLinks.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+            onClick={(e) => handleNavClick(e, link.href, link.external)}
+            className={`font-display text-2xl tracking-tighter transition-colors duration-300 ${
+              isActive(link.href) ? 'text-accent-stone' : 'text-text-secondary hover:text-text-primary'
+            }`}
           >
-            <X size={28} />
-          </button>
-          <div className="flex flex-col items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}
-                onClick={(e) => handleNavClick(e, link.href, link.external)}
-                className="font-heading-card text-text-primary hover:text-accent-ember transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
+            {link.label}
+          </a>
+        ))}
+        <button 
+          onClick={() => {
+            onGetStarted?.();
+            setMobileOpen(false);
+          }}
+          className="mt-8 px-8 py-4 bg-accent-stone text-surface-void rounded-full font-label text-xs tracking-widest uppercase hover:brightness-110 transition-all"
+        >
+          Get Started
+        </button>
+      </div>
     </>
   );
 }

@@ -1,9 +1,13 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ChevronDown, Github } from 'lucide-react';
+import { ChevronDown, Github, Terminal } from 'lucide-react';
 import EmberCanvas from '../components/EmberCanvas';
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  onGetStarted?: () => void;
+}
+
+export default function HeroSection({ onGetStarted }: HeroSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -25,11 +29,6 @@ export default function HeroSection() {
     return () => { tl.kill(); };
   }, []);
 
-  const handleExplore = () => {
-    const el = document.getElementById('stones');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section
       id="hero"
@@ -47,7 +46,7 @@ export default function HeroSection() {
       <div className="relative z-10 text-center max-w-[800px] mx-auto px-6">
         <p
           ref={subtitleRef}
-          className="font-label text-accent-ember mb-6 opacity-0 translate-y-4"
+          className="font-label text-accent-stone mb-6 opacity-0 translate-y-4 tracking-[0.3em]"
         >
           THE AWARENESS LAYER
         </p>
@@ -60,24 +59,25 @@ export default function HeroSection() {
         </p>
 
         <p className="font-body-large text-text-secondary italic mt-8 opacity-0 translate-y-4 max-w-2xl mx-auto" ref={taglineRef}>
-          Stones for Intuition. VIGIL for Action.
+          Soul for Intuition. Body for Awareness. Path for Anomaly.
         </p>
 
         <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12 opacity-0 translate-y-4">
           <button
-            onClick={handleExplore}
-            className="px-10 py-4 bg-accent-ember text-white font-label rounded-full hover:bg-[#f0703a] hover:shadow-glow hover:-translate-y-0.5 transition-all duration-200"
+            onClick={onGetStarted}
+            className="flex items-center gap-3 px-10 py-4 bg-accent-stone text-[#0A0A0B] font-label text-xs uppercase tracking-widest rounded-full hover:brightness-110 hover:shadow-glow hover:-translate-y-0.5 transition-all duration-200"
           >
-            Explore the Ecosystem
+            <Terminal size={16} />
+            Get Started
           </button>
           <a
             href="https://github.com/codedbyOzzy/ProjectVIGIL"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-8 py-3.5 border border-[rgba(240,236,228,0.15)] text-text-primary font-label rounded-full hover:bg-text-primary hover:text-surface-void hover:border-transparent transition-all duration-200"
+            className="flex items-center gap-2 px-8 py-3.5 border border-[rgba(240,236,228,0.15)] text-text-primary font-label text-xs uppercase tracking-widest rounded-full hover:bg-text-primary hover:text-surface-void hover:border-transparent transition-all duration-200"
           >
             <Github size={16} />
-            View on GitHub
+            GitHub
           </a>
         </div>
       </div>
@@ -88,7 +88,7 @@ export default function HeroSection() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 translate-y-4 z-10"
       >
         <ChevronDown size={20} className="text-text-dim animate-scroll-bounce" />
-        <span className="font-label text-text-dim">Scroll</span>
+        <span className="font-label text-text-dim text-[10px] tracking-widest uppercase">Scroll</span>
       </div>
     </section>
   );
