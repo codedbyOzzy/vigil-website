@@ -52,15 +52,15 @@ export default function HeroSection() {
           THE AWARENESS LAYER
         </p>
 
-        <h1 ref={titleRef} className="font-display-hero text-text-primary opacity-0 translate-y-4">
-          VIGIL
+        <h1 ref={titleRef} className="font-display-hero text-text-primary text-5xl md:text-7xl opacity-0 translate-y-4 leading-tight">
+          THE COGNITIVE SINGULARITY FRAMEWORK
         </h1>
-        <p className="font-display-subsection text-text-secondary mt-2 opacity-0 translate-y-4" ref={subtitle2Ref}>
-          for AI Assistants
+        <p className="font-display-subsection text-text-secondary mt-4 opacity-0 translate-y-4" ref={subtitle2Ref}>
+          The Awareness Layer
         </p>
 
-        <p className="font-body-large text-text-secondary italic mt-8 opacity-0 translate-y-4" ref={taglineRef}>
-          What if your AI assistant could notice things — without being asked?
+        <p className="font-body-large text-text-secondary italic mt-8 opacity-0 translate-y-4 max-w-2xl mx-auto" ref={taglineRef}>
+          "Intelligence-Stones is the Soul (Data & Intuition), while VIGIL is the Body (Logic & Interaction) of the ecosystem."
         </p>
 
         <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12 opacity-0 translate-y-4">
