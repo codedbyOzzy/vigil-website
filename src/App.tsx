@@ -23,23 +23,23 @@ export default function App() {
 
   return (
     <HashRouter>
-      <div className="min-h-screen bg-surface-void">
+      <div className="min-h-screen bg-surface-void text-[#F0ECE4] selection:bg-accent-stone selection:text-black">
         <Routes>
           <Route path="/" element={
             <>
               <Navigation onGetStarted={onGetStarted} />
               <main>
                 <HeroSection onGetStarted={onGetStarted} />
+                <VisionSection />
                 <ProblemSection />
                 <IntelligenceStonesSection />
-                <ArchitectureSection />
                 <VigilModulesSection />
+                <ArchitectureSection />
                 <IntegrationSection />
                 <RelationshipSection />
-                <ComparisonSection />
                 <FridaySection />
                 <RoadmapSection />
-                <VisionSection />
+                <ComparisonSection />
                 <CTASection onGetStarted={onGetStarted} />
               </main>
               <Footer />
