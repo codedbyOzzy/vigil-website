@@ -25,7 +25,7 @@ export default function CTASection({ onGetStarted }: CTASectionProps) {
               Quick Start
             </button>
             <a
-              href="https://github.com/codedbyOzzy/THESingularity/blob/main/INSTALLATION_GUIDE.md"
+              href="https://github.com/codedbyOzzy/THESingularity/blob/master/INSTALLATION_GUIDE.md"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 border border-[rgba(240,236,228,0.15)] text-text-primary font-label text-xs uppercase tracking-widest rounded-full hover:bg-text-primary hover:text-surface-void hover:border-transparent transition-all duration-200"

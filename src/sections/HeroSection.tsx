@@ -71,7 +71,7 @@ export default function HeroSection({ onGetStarted }: HeroSectionProps) {
             Get Started
           </button>
           <a
-            href="https://github.com/codedbyOzzy/ProjectVIGIL"
+            href="https://github.com/codedbyOzzy/THESingularity"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-8 py-3.5 border border-[rgba(240,236,228,0.15)] text-text-primary font-label text-xs uppercase tracking-widest rounded-full hover:bg-text-primary hover:text-surface-void hover:border-transparent transition-all duration-200"

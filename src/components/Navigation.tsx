@@ -10,7 +10,7 @@ const navLinks = [
   { label: 'VIGIL (The Body)', href: '#vigil' },
   { label: 'Ecosystem', href: '#relationship' },
   { label: 'Vision', href: '#vision' },
-  { label: 'GitHub', href: 'https://github.com/codedbyOzzy/ProjectVIGIL', external: true },
+  { label: 'GitHub', href: 'https://github.com/codedbyOzzy/THESingularity', external: true },
 ];
 
 interface NavigationProps {

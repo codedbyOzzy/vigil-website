@@ -48,28 +48,28 @@ export default function Footer() {
             <p className="font-label text-text-dim mb-4">Connect</p>
             <div className="flex flex-col gap-2">
               <a
-                href="https://github.com/codedbyOzzy/ProjectVIGIL"
+                href="https://github.com/codedbyOzzy/THESingularity"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-body-small text-text-secondary hover:text-text-primary transition-colors duration-200"
               >
-                ProjectVIGIL on GitHub
+                The Singularity on GitHub
               </a>
               <a
-                href="https://github.com/codedbyOzzy/Intelligence-Stones"
+                href="https://github.com/codedbyOzzy/THESingularity/blob/master/INSTALLATION_GUIDE.md"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-body-small text-text-secondary hover:text-text-primary transition-colors duration-200"
               >
-                Intelligence-Stones on GitHub
+                Technical Documentation
               </a>
               <a
-                href="https://github.com/codedbyOzzy/ProjectFridaySynapse"
+                href="https://github.com/codedbyOzzy/THESingularity"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-body-small text-text-secondary hover:text-text-primary transition-colors duration-200"
               >
-                FRIDAY Synapse
+                Open Source Manifesto
               </a>
             </div>
           </div>
