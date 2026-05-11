@@ -7,11 +7,8 @@ import {
   Eye, 
   Zap, 
   Activity, 
-  Compass, 
-  Mirror, 
   Layers, 
-  Menu, 
-  X 
+  Menu 
 } from 'lucide-react';
 
 const sidebarItems = [
