@@ -4,7 +4,6 @@ import {
   ChevronRight, 
   Code, 
   Cpu, 
-  Eye, 
   Zap, 
   Activity, 
   Layers, 
