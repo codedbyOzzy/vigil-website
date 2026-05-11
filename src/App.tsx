@@ -11,6 +11,7 @@ import FridaySection from './sections/FridaySection';
 import RoadmapSection from './sections/RoadmapSection';
 import VisionSection from './sections/VisionSection';
 import CTASection from './sections/CTASection';
+import ComparisonSection from './sections/ComparisonSection';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <VigilModulesSection />
         <IntegrationSection />
         <RelationshipSection />
+        <ComparisonSection />
         <FridaySection />
         <RoadmapSection />
         <VisionSection />

@@ -8,7 +8,7 @@ const modules = [
     status: 'progress' as const,
     quote: "Some things don't close. EMBER keeps watching them.",
     description:
-      'Detects unresolved topics, unfinished tasks, and recurring concerns across conversations. Each ember has a heat level — it glows brighter when related topics surface, fades when resolved, and surfaces proactively when it\'s been burning too long. Every unresolved topic creates an ember with a heat value (0.0-1.0) that evolves over time.',
+      'Detects unresolved topics and recurring concerns. Each ember has a heat level (0.0-1.0) that evolves dynamically: +0.20 on recurrence, -0.05 per day of silence. High-heat embers trigger proactive signals to ensure nothing burns too long without resolution.',
     image: '/images/vigil-ember.jpg',
   },
   {

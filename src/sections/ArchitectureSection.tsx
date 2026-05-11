@@ -30,6 +30,11 @@ const flowSteps = [
     name: 'Echo Stone',
     quote: "They said 'ok' — but they asked the same thing three turns ago. This explanation isn't landing. Flag for next turn.",
   },
+  {
+    type: 'stone',
+    name: 'Logic Stone',
+    quote: 'Consolidating all directives. Injecting behavioral context into the BrainCore system prompt. Ready for generation.',
+  },
 ];
 
 export default function ArchitectureSection() {
