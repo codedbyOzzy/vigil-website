@@ -10,108 +10,61 @@ import {
   Menu,
   AlertCircle,
   Terminal,
-  BookOpen
+  BookOpen,
+  Brain
 } from 'lucide-react';
 
 const sidebarItems = [
-  { id: 'introduction', label: 'Introduction', icon: <Layers size={18} /> },
-  { id: 'architecture', label: 'Core Architecture', icon: <BookOpen size={18} /> },
-  { id: 'integration', label: 'Integration Guide', icon: <Zap size={18} /> },
-  { id: 'arc', label: 'THE ARC (The Path)', icon: <Activity size={18} /> },
-  { id: 'stones', label: 'VIGIL Stones (The Body)', icon: <Cpu size={18} /> },
-  { id: 'api', label: 'API Reference', icon: <Code size={18} /> },
-  { id: 'troubleshooting', label: 'Troubleshooting', icon: <AlertCircle size={18} /> },
+  { id: 'introduction', label: 'INTRODUCTION', icon: <Layers size={18} /> },
+  { id: 'intelligence_stones', label: 'INTELLIGENCE STONES', icon: <Brain size={18} /> },
+  { id: 'vigil_awareness', label: 'VIGIL AWARENESS', icon: <Cpu size={18} /> },
+  { id: 'arc_narrative', label: 'THE ARC NARRATIVE', icon: <Activity size={18} /> },
+  { id: 'integration_guide', label: 'INTEGRATION GUIDE', icon: <Zap size={18} /> },
+  { id: 'api_reference', label: 'API REFERENCE', icon: <Code size={18} /> },
 ];
 
 const content = {
   introduction: {
-    title: 'The Awareness Layer',
-    body: `VIGIL and THE ARC form the awareness layers of an AI assistant. While traditional LLMs are reactive, the Singularity ecosystem enables an assistant that understands the narrative trajectory and the current behavioral state of the user.
+    title: 'Introduction to The Singularity',
+    body: `The Singularity is a unified intelligence ecosystem designed to bridge the gap between reactive AI models and sentient-like digital partners. It operates on three pillars: The Soul (Stones), The Body (VIGIL), and The Path (ARC).
 
-VIGIL provides the "Body" (real-time sensing), while THE ARC provides the "Path" (temporal narrative). Together, they allow an assistant to notice patterns beneath the surface of the words.`,
+VIGIL and THE ARC form the awareness layers of an AI assistant. While traditional LLMs are reactive, the Singularity ecosystem enables an assistant that understands the narrative trajectory and the current behavioral state of the user.`,
     code: `# No dependencies required. 
 # Just drop the .py files into your project.
 # Python 3.9+ recommended.`,
   },
-  architecture: {
-    title: 'Core Architecture',
-    body: `The system operates on a different layer than standard "memory" or "knowledge" systems. It focuses on awareness.
+  intelligence_stones: {
+    title: 'Intelligence Stones (The Soul)',
+    body: `Intelligence Stones are the cognitive building blocks of the ecosystem. They focus on "Who" the user is and "How" the assistant should communicate.
 
-┌─────────────────────────────────────────────────────────────┐
-│  Layer 1 — Narrative (THE ARC)                              │
-│  → Tracks decisions, growth, and long-term threads.         │
-├─────────────────────────────────────────────────────────────┤
-│  Layer 2 — User State (TideStone)                           │
-│  → Measures energy, focus, and pace in real-time.           │
-├─────────────────────────────────────────────────────────────┤
-│  Layer 3 — Goals (CompassStone)                             │
-│  → Extracts and monitors multi-turn goal progress.          │
-├─────────────────────────────────────────────────────────────┤
-│  Layer 4 — Recurrence (EmberStone)                          │
-│  → Identifies "hot" topics and unresolved loops.            │
-├─────────────────────────────────────────────────────────────┤
-│  Layer 5 — Self-Awareness (MirrorStone)                     │
-│  → Evaluates assistant confidence and hedging.               │
-└─────────────────────────────────────────────────────────────┘
+• MindStone: Communication style EMA profiling.
+• EchoStone: Long-term world modeling and memory decay.
+• BondStone: Personal relationship and preference tracking.
+• IntuitionStone: Pattern recognition across different domains.`,
+    code: `from stones import MindStone
 
-The integration follows a "Query Loop" cycle:
-1. OBSERVE: Record user input.
-2. CONSULT: Ask stones for directives.
-3. GENERATE: LLM produces a response.
-4. OBSERVE: Record assistant response.`,
-    code: ``,
+mind = MindStone()
+mind.observe(user_input="Keep it brief.", assistant_output="Sure.")
+print(mind.get_style_directive())`,
   },
-  integration: {
-    title: 'Step-by-Step Integration',
-    body: `Follow these steps to integrate the ecosystem into your assistant:
+  vigil_awareness: {
+    title: 'VIGIL Awareness (The Body)',
+    body: `The VIGIL layer senses the "Now". It focuses on real-time awareness and behavioral signals.
 
-1. **Setup Folder Structure**:
-   Create a 'vigilstones' folder in your project and copy all .py files into it.
-
-2. **Initialize Modules**:
-   Initialize the modules in your assistant constructor. They are lightweight and use JSON for persistence.
-
-3. **The Observation Loop**:
-   Feed user messages and assistant responses to the stones immediately after they occur.`,
-    code: `from vigilstones.the_arc import TheArc, TurnRecord
-from vigilstones.tide_stone import TideStone
-from vigilstones.compass_stone import CompassStone
-import time
-
-class MyAssistant:
-    def __init__(self):
-        # Initialize with persistence paths
-        self.arc = TheArc(path="data/arc.json")
-        self.tide = TideStone(min_turns=3)
-        self.compass = CompassStone(path="data/goals.json")
-        self.turn_id = 0
-
-    def get_response(self, user_msg):
-        self.turn_id += 1
-        # 1. Observe User Input
-        self.tide.observe_user(user_msg)
-        self.compass.observe(user_msg, "")
-        
-        # 2. Consult Stones for System Prompt
-        additions = []
-        if ctx := self.arc.consult(user_msg): additions.append(ctx)
-        if d := self.tide.get_state_directive(): additions.append(d)
-        
-        system_prompt = "Base Prompt..." + "\\n\\n".join(additions)
-        
-        # 3. Call LLM
-        response = llm.call(system_prompt, user_msg)
-        
-        # 4. Observe Assistant Response
-        self.turn_id += 1
-        self.arc.absorb(TurnRecord(self.turn_id, "assistant", response, time.time()))
-        return response`,
+• TideStone: Reads energy, pace, and focus. If a user is typing fast at 1 AM with short messages, Tide suggests keeping responses brief.
+• CompassStone: Extracts session and project goals. It knows "Why" the user is asking "What".
+• EmberStone: Tracks topic heat. Topics gain heat (+0.15) on recurrence and decay (-0.02/day) with silence.
+• MirrorStone: Scans assistant output for hedging (e.g., "I think", "maybe"). Builds a domain-specific confidence model.`,
+    code: `# Ember Heat Lifecycle Example:
+# Topic appears -> HEAT 0.30
+# Recurrence    -> HEAT +0.15
+# Silent day    -> HEAT -0.02
+# "Done" signal -> HEAT -0.30 (Resolved)`,
   },
-  arc: {
-    title: 'THE ARC (The Path)',
+  arc_narrative: {
+    title: 'The ARC (The Path)',
     body: `THE ARC is the narrative wisdom layer. It doesn't just store logs; it understands the story arc of the user's journey.
 
-Key Features:
 • Decision Tracking: Identifies when a user makes a definitive choice (e.g., "I'll use React").
 • Ghost Threads: Bridges the gap between sessions separated by days or weeks.
 • Growth Fingerprint: Recognizes user maturity in specific topics over time.
@@ -124,27 +77,42 @@ EPISODE STATES:
     code: `# THE ARC API Reference
 arc.absorb(TurnRecord)       # Record a conversation turn
 arc.consult(query)           # Get narrative directive
-arc.get_decision_context(q)  # Summarize past decisions
-arc.run_decay()              # Call daily to age topics`,
+arc.get_decision_context(q)  # Summarize past decisions`,
   },
-  stones: {
-    title: 'VIGIL Stones (The Body)',
-    body: `VIGIL provides the sensory data for the "Now".
+  integration_guide: {
+    title: 'Step-by-Step Integration',
+    body: `Follow these steps to integrate the ecosystem into your assistant:
 
-• TideStone: Real-time user state (Energy, Focus, Pace).
-• CompassStone: Goal extractor and tracker.
-• EmberStone: Topic heat tracker (+0.15 on recurrence, -0.02 decay/day).
-• MirrorStone: Detection of assistant hedging ("I think", "maybe").
+1. **Setup Folder Structure**: Create a 'vigilstones' folder and copy all .py files.
+2. **Initialize Modules**: Start modules in your assistant constructor.
+3. **The Observation Loop**: Feed user messages and assistant responses to the stones immediately.
+4. **The Consult Loop**: Ask stones for prompt directives before each generation.`,
+    code: `from vigilstones.the_arc import TheArc, TurnRecord
+from vigilstones.tide_stone import TideStone
 
-Every stone is designed for maximum performance, running in microseconds without external API calls.`,
-    code: `# TideStone State Levels
-# energy: high | medium | low
-# pace: brisk | measured | relaxed
-# focus: sharp | normal | scattered`,
+class MyAssistant:
+    def __init__(self):
+        self.arc = TheArc(path="data/arc.json")
+        self.tide = TideStone(min_turns=3)
+
+    def get_response(self, user_msg):
+        # 1. Observe
+        self.tide.observe_user(user_msg)
+        
+        # 2. Consult
+        ctx = self.arc.consult(user_msg)
+        system_prompt = f"Base... {ctx}"
+        
+        # 3. Generate & Observe Assistant
+        response = llm.call(system_prompt, user_msg)
+        self.arc.absorb(TurnRecord(role="assistant", content=response))
+        return response`,
   },
-  api: {
+  api_reference: {
     title: 'API Reference',
-    body: `| Class | Constructor | Key Method |
+    body: `Full technical specification for the ecosystem modules.
+
+| Class | Constructor | Key Method |
 |:---|:---|:---|
 | **TheArc** | \`path, decay_per_day\` | \`.consult(query)\` |
 | **TideStone** | \`min_turns, max_window\` | \`.get_state_directive()\` |
@@ -159,17 +127,6 @@ Every stone is designed for maximum performance, running in microseconds without
   "confidence_score": 0.91,
   "user_pace": "brisk"
 }`,
-  },
-  troubleshooting: {
-    title: 'Troubleshooting',
-    body: `Common integration issues and their solutions:
-
-• **ModuleNotFoundError**: Ensure the 'vigilstones' folder is in your Python path or use 'sys.path.insert'.
-• **TideStone returns None**: This is normal. It requires at least 'min_turns' (default 3) to build a baseline before outputting state.
-• **Empty ARC Consult**: THE ARC uses Jaccard similarity. If the message is too short or doesn't match an existing episode topic, it remains silent to avoid noise.`,
-    code: `import sys
-# If modules are in a subfolder:
-sys.path.append("./vigilstones")`,
   },
 };
 
@@ -254,7 +211,7 @@ export default function Docs() {
           <div className="flex items-center gap-2 text-text-dim font-label text-xs uppercase tracking-widest mb-6">
             <span>Documentation</span>
             <ChevronRight size={12} />
-            <span className="text-accent-stone">{activeTab}</span>
+            <span className="text-accent-stone">{activeTab.replace('_', ' ').toUpperCase()}</span>
           </div>
 
           <h1 className="font-display-section text-4xl md:text-5xl text-text-primary mb-8">
@@ -271,7 +228,7 @@ export default function Docs() {
             <div className="mt-12 group">
               <div className="flex items-center justify-between px-4 py-2 bg-[#121214] border-t border-x border-[rgba(240,236,228,0.06)] rounded-t-xl">
                 <span className="font-label text-xs text-text-dim uppercase tracking-widest flex items-center gap-2">
-                  <Terminal size={12} /> terminal
+                  <Terminal size={12} /> code_example.py
                 </span>
               </div>
               <pre className="p-6 bg-[#0E0E10] border border-[rgba(240,236,228,0.06)] rounded-b-xl overflow-x-auto">
