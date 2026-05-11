@@ -10,6 +10,7 @@ import ArchitectureSection from './sections/ArchitectureSection';
 import VigilModulesSection from './sections/VigilModulesSection';
 import IntegrationSection from './sections/IntegrationSection';
 import RelationshipSection from './sections/RelationshipSection';
+import EvolutionSection from './sections/EvolutionSection';
 import FridaySection from './sections/FridaySection';
 import RoadmapSection from './sections/RoadmapSection';
 import VisionSection from './sections/VisionSection';
@@ -37,9 +38,10 @@ export default function App() {
                 <ArchitectureSection />
                 <IntegrationSection />
                 <RelationshipSection />
+                <ComparisonSection />
+                <EvolutionSection />
                 <FridaySection />
                 <RoadmapSection />
-                <ComparisonSection />
                 <CTASection onGetStarted={onGetStarted} />
               </main>
               <Footer />
