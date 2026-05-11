@@ -60,7 +60,7 @@ export default function HeroSection() {
         </p>
 
         <p className="font-body-large text-text-secondary italic mt-8 opacity-0 translate-y-4 max-w-2xl mx-auto" ref={taglineRef}>
-          "Intelligence-Stones is the Soul (Data & Intuition), while VIGIL is the Body (Logic & Interaction) of the ecosystem."
+          Stones for Intuition. VIGIL for Action.
         </p>
 
         <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12 opacity-0 translate-y-4">
