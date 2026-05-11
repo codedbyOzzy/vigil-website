@@ -49,8 +49,23 @@ const content = {
 export default function Docs() {
   const [activeTab, setActiveTab] = useState('introduction');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const currentIndex = sidebarItems.findIndex(item => item.id === activeTab);
 
   const activeContent = content[activeTab as keyof typeof content] || content.introduction;
+  
+  const handleNext = () => {
+    if (currentIndex < sidebarItems.length - 1) {
+      setActiveTab(sidebarItems[currentIndex + 1].id);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setActiveTab(sidebarItems[currentIndex - 1].id);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="flex h-screen bg-[#0A0A0B] text-text-primary overflow-hidden">
@@ -80,6 +95,7 @@ export default function Docs() {
                 onClick={() => {
                   setActiveTab(item.id);
                   setIsSidebarOpen(false);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 className={`
                   w-full flex items-center gap-3 px-4 py-3 rounded-lg font-label text-sm transition-all
@@ -140,18 +156,26 @@ export default function Docs() {
           )}
 
           <div className="mt-20 pt-12 border-t border-[rgba(240,236,228,0.06)] flex justify-between items-center">
-            <div className="flex items-center gap-4 text-text-dim hover:text-text-primary cursor-pointer transition-colors">
+            <button 
+              onClick={handlePrev}
+              disabled={currentIndex === 0}
+              className={`flex items-center gap-4 transition-colors ${currentIndex === 0 ? 'opacity-20 cursor-not-allowed' : 'text-text-dim hover:text-text-primary cursor-pointer'}`}
+            >
               <div className="w-10 h-10 rounded-full bg-surface-raised flex items-center justify-center">
                 <ChevronRight size={18} className="rotate-180" />
               </div>
               <span className="font-label text-sm uppercase">Previous</span>
-            </div>
-            <div className="flex items-center gap-4 text-text-dim hover:text-text-primary cursor-pointer transition-colors text-right">
+            </button>
+            <button 
+              onClick={handleNext}
+              disabled={currentIndex === sidebarItems.length - 1}
+              className={`flex items-center gap-4 transition-colors text-right ${currentIndex === sidebarItems.length - 1 ? 'opacity-20 cursor-not-allowed' : 'text-text-dim hover:text-text-primary cursor-pointer'}`}
+            >
               <span className="font-label text-sm uppercase">Next</span>
               <div className="w-10 h-10 rounded-full bg-surface-raised flex items-center justify-center">
                 <ChevronRight size={18} />
               </div>
-            </div>
+            </button>
           </div>
         </div>
       </main>
