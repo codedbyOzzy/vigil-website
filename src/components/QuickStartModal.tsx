@@ -114,7 +114,7 @@ ctx = arc.consult("Hello Singularity")
             "Awareness is not a feature, it's a layer."
           </p>
           <a 
-            href="https://github.com/codedbyOzzy/ProjectVIGIL/blob/main/INSTALLATION_GUIDE.md" 
+            href="https://github.com/codedbyOzzy/THESingularity/blob/main/INSTALLATION_GUIDE.md" 
             target="_blank" 
             rel="noopener noreferrer"
             className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-accent-stone text-[#0A0A0B] rounded-lg font-label text-xs uppercase tracking-widest hover:brightness-110 transition-all group"
