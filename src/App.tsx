@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { HashRouter, Routes, Route } from 'react-router';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import HeroSection from './sections/HeroSection';
@@ -36,7 +36,7 @@ function HomePage() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="min-h-screen bg-surface-void">
         <Routes>
           {/* Main Site Route */}
@@ -52,6 +52,6 @@ export default function App() {
           <Route path="/docs" element={<Docs />} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
