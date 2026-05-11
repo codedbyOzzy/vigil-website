@@ -13,7 +13,6 @@ import RoadmapSection from './sections/RoadmapSection';
 import VisionSection from './sections/VisionSection';
 import CTASection from './sections/CTASection';
 import ComparisonSection from './sections/ComparisonSection';
-import Docs from './pages/Docs';
 
 function HomePage() {
   return (
@@ -39,7 +38,6 @@ export default function App() {
     <HashRouter>
       <div className="min-h-screen bg-surface-void">
         <Routes>
-          {/* Main Site Route */}
           <Route path="/" element={
             <>
               <Navigation />
