@@ -8,9 +8,7 @@ import {
   Activity, 
   Layers, 
   Menu,
-  AlertCircle,
   Terminal,
-  BookOpen,
   Brain
 } from 'lucide-react';
 
