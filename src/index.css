@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 14% 4%;
+    --foreground: 36 21% 92%;
+    --card: 240 14% 6%;
+    --card-foreground: 36 21% 92%;
+    --popover: 240 14% 6%;
+    --popover-foreground: 36 21% 92%;
+    --primary: 17 80% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 10% 8%;
+    --secondary-foreground: 36 21% 92%;
+    --muted: 240 10% 8%;
+    --muted-foreground: 30 5% 53%;
+    --accent: 240 10% 8%;
+    --accent-foreground: 36 21% 92%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 36 21% 92% / 0.06;
+    --input: 36 21% 92% / 0.06;
+    --ring: 17 80% 53%;
+    --radius: 0.625rem;
+
+    --surface-void: #08080a;
+    --surface-deep: #0d0d12;
+    --surface-raised: #141419;
+    --text-primary: #f0ece4;
+    --text-secondary: #8a8580;
+    --text-dim: #5c5854;
+    --accent-ember: #e85d2b;
+    --accent-ember-dim: #a33d1a;
+    --accent-compass: #c9a84c;
+    --accent-tide: #3d9bc0;
+    --accent-mirror: #7a8a9e;
+    --accent-stone: #6b8f71;
+    --accent-stone-dim: #4a6b50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--surface-void);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .font-display-hero {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -4px;
+  }
+
+  .font-display-section {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -2px;
+  }
+
+  .font-display-subsection {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+  }
+
+  .font-heading-card {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .font-body-large {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: -0.2px;
+  }
+
+  .font-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .font-body-small {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  .font-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .font-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+}
+
+@layer base {
+  @keyframes scroll-bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(8px);
+    }
+  }
+
+  .animate-scroll-bounce {
+    animation: scroll-bounce 2s ease-in-out infinite;
+  }
+}
+
+@media (max-width: 768px) {
+  .font-display-hero {
+    font-size: 56px;
+    letter-spacing: -2px;
+  }
+
+  .font-display-section {
+    font-size: 40px;
+    letter-spacing: -1px;
+  }
+
+  .font-display-subsection {
+    font-size: 32px;
+    letter-spacing: -0.5px;
+  }
+
+  .font-heading-card {
+    font-size: 24px;
+  }
+}
