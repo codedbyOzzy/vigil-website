@@ -9,7 +9,7 @@ const stones = [
     learnsKeyword: 'HOW',
     learnsText: 'the user communicates',
     description:
-      'Observes every conversation turn and builds a quantified model of how a user communicates. verbosity, tech_depth, example_bias, follow_up_rate — all tracked via EMA updates. Generates a short style directive injected into the system prompt, shaping tone, depth, and format without the user ever configuring anything.',
+      'The "Voice" of the AI. Observes every conversation turn to build a quantified model of communication style. Verbosity, technical depth, and tone bias are all tracked to ensure the AI speaks your language, not just at you.',
     image: '/images/stone-mind.jpg',
   },
   {
@@ -17,9 +17,9 @@ const stones = [
     name: 'Echo Stone',
     version: 'v1.1.0',
     learnsKeyword: 'WHETHER',
-    learnsText: 'the user actually understood',
+    learnsText: 'the user understood',
     description:
-      "Detects false confirmations, confusion patterns, and cognitive overload. Knows the difference between 'got it' and 'got it' (but didn't). If the user asks the same thing three turns ago, Echo Stone flags that the explanation isn't landing.",
+      "The 'Clarity' engine. Detects confusion patterns and cognitive overload. Knows the difference between a polite 'got it' and genuine understanding. If an explanation isn't landing, Echo Stone flags the breakdown.",
     image: '/images/stone-echo.jpg',
   },
   {
@@ -29,7 +29,7 @@ const stones = [
     learnsKeyword: 'WHO',
     learnsText: 'the user is',
     description:
-      "Builds a persistent model of your world across sessions. Remembers without being told to remember. Your projects, your stack, your constraints, your people. When you say 'the usual setup' or 'that API problem', Bond Stone knows what you mean.",
+      "The 'Persistence' layer. Builds a long-term model of your stack, your constraints, and your world. Remembers the 'context' of who you are across every session without requiring repetitive manual instruction.",
     image: '/images/stone-bond.jpg',
   },
   {
@@ -39,7 +39,7 @@ const stones = [
     learnsKeyword: 'WHERE',
     learnsText: 'the conversation is going',
     description:
-      "Learns the shape of conversations. Knows where this is going before you finish asking. When you've seen this pattern before and you'll need X next, Intuition Stone is already preparing the answer you haven't asked yet.",
+      "The 'Foresight' engine. Learns the shape of your workflows. Predicts where a conversation is headed before you finish the turn, ensuring the AI is always preparing for the next logical step in your project.",
     image: '/images/stone-intuition.jpg',
   },
 ];
@@ -49,12 +49,13 @@ export default function IntelligenceStonesSection() {
     <section id="stones" className="bg-surface-deep py-[120px] px-6">
       <div className="max-w-[1200px] mx-auto">
         <ScrollReveal stagger={0.15}>
-          <p className="section-label text-accent-stone mb-6">02 / COGNITIVE FOUNDATION</p>
+          <p className="section-label text-accent-stone mb-6">02 / THE MIND LAYER</p>
 
           <h2 className="font-display-section text-text-primary">Intelligence Stones</h2>
+          <p className="font-label text-accent-stone mt-2">SOUL: EXPRESSION & IDENTITY</p>
 
           <p className="font-body-large text-text-secondary italic mt-4 mb-16">
-            Most AI assistants know what to say. These teach them how to say it — and whether it actually landed.
+            "How does the assistant speak to this user?" — These stones define the persona, clarity, and persistence of the AI's interaction model.
           </p>
         </ScrollReveal>
 
@@ -66,29 +67,12 @@ export default function IntelligenceStonesSection() {
           ))}
         </div>
 
-        {/* Architecture diagram */}
+        {/* Comparison sub-text */}
         <ScrollReveal className="mt-20">
-          <div className="bg-surface-raised border border-[rgba(240,236,228,0.06)] rounded-2xl p-8 md:p-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <p className="font-label text-text-dim mb-3">Layer 1 — Expression</p>
-                <p className="font-code text-text-primary text-sm">
-                  Mind Stone + Echo Stone
-                </p>
-              </div>
-              <div className="text-center">
-                <p className="font-label text-text-dim mb-3">Layer 2 — Context</p>
-                <p className="font-code text-text-primary text-sm">
-                  Bond Stone
-                </p>
-              </div>
-              <div className="text-center">
-                <p className="font-label text-text-dim mb-3">Layer 3 — Prediction</p>
-                <p className="font-code text-text-primary text-sm">
-                  Intuition Stone
-                </p>
-              </div>
-            </div>
+          <div className="text-center p-8 rounded-2xl border border-white/5 bg-surface-raised/30">
+            <p className="font-body text-text-dim max-w-2xl mx-auto">
+              While <strong>Intelligence Stones</strong> focus on <em>how</em> the assistant communicates, the <strong>Awareness Layer (VIGIL)</strong> focuses on <em>what</em> the user is trying to achieve. Together, they create a complete AI partner.
+            </p>
           </div>
         </ScrollReveal>
       </div>

@@ -2,29 +2,29 @@ import ScrollReveal from '../components/ScrollReveal';
 import { Check, X, Shield, Zap, Database } from 'lucide-react';
 
 const comparisonData = [
-  { feature: 'Architecture', before: 'Simple AI Chat', after: 'Multi-layered OS', status: true },
-  { feature: 'Memory', before: 'Stateless / Volatile', after: 'Full Persistent Memory', status: true },
-  { feature: 'Interaction', before: 'Reactive Only', after: 'Proactive + Reactive', status: true },
-  { feature: 'Awareness', before: 'Instant Response', after: 'Long-term Story Tracking', status: true },
-  { feature: 'Reliability', before: 'Crash-prone', after: 'Atomic Writes & Fallbacks', status: true },
-  { feature: 'Intelligence', before: 'Single Provider', after: 'Multi-provider + Fallback', status: true },
+  { feature: 'Core Strategy', before: 'Reactive Response', after: 'Proactive Intelligence', status: true },
+  { feature: 'Model Selection', before: 'Fixed Overkill', after: 'Oracle Routing (v1.0)', status: true },
+  { feature: 'Context Flow', before: 'Stateless Snips', after: 'Narrative Arcs (v1.0)', status: true },
+  { feature: 'User Awareness', before: 'Zero Behavioral Data', after: 'Real-time State (v1.0)', status: true },
+  { feature: 'Memory Depth', before: 'Simple Chat Logs', after: 'Longitudinal Archive (v1.0)', status: true },
+  { feature: 'System Cost', before: 'High/Linear', after: '40% Optimized (Oracle)', status: true },
 ];
 
-const stabilityFeatures = [
+const ecosystemPillars = [
+  {
+    icon: <Zap className="text-accent-stone" />,
+    title: 'Model Autonomy',
+    description: 'Oracle automatically selects the right brain for the right query. No more wasting GPT-4 on "hello".',
+  },
   {
     icon: <Shield className="text-accent-stone" />,
-    title: 'Atomic Write Protection',
-    description: 'Every byte is written to a temporary file first. Friday ensures your memory is never corrupted, even during a power failure.',
+    title: 'Proactive Synthesis',
+    description: 'Spectre anticipates the next turn before the user speaks, synthesizing persona data with narrative trajectory.',
   },
   {
-    icon: <Zap className="text-accent-ember" />,
-    title: 'Circuit Breaker Logic',
-    description: 'If a provider or tool fails, the system automatically redirects traffic or enters a safe "Half-Open" state to prevent cascade failures.',
-  },
-  {
-    icon: <Database className="text-accent-compass" />,
-    title: 'Crash-Safe Logging',
-    description: 'Append-only session logs with atomic rotation. Your conversation history is immutable and recovery-ready at all times.',
+    icon: <Database className="text-accent-stone" />,
+    title: 'Emotional Legacy',
+    description: 'Archive builds a profile across months, tracking emotional signatures and long-term behavioral trends.',
   },
 ];
 
@@ -37,7 +37,7 @@ export default function ComparisonSection() {
           <ScrollReveal>
             <h2 className="font-display-section text-text-primary mb-8">The Transformation</h2>
             <p className="font-body-large text-text-secondary mb-12">
-              Beyond simple chat. We are building a high-availability infrastructure for human-AI partnership.
+              Beyond simple chat. The Singularity moves AI from a reactive tool to a proactive partner.
             </p>
             
             <div className="bg-surface-raised rounded-2xl border border-[rgba(240,236,228,0.06)] overflow-hidden">
@@ -66,12 +66,12 @@ export default function ComparisonSection() {
             </div>
           </ScrollReveal>
 
-          {/* Right: Stability Features */}
+          {/* Right: Ecosystem Pillars */}
           <div className="space-y-12">
             <ScrollReveal delay={0.2}>
-              <h2 className="font-display-section text-text-primary mb-8">Built for Stability</h2>
+              <h2 className="font-display-section text-text-primary mb-8">Ecosystem v1.0</h2>
               <div className="space-y-8">
-                {stabilityFeatures.map((feat, i) => (
+                {ecosystemPillars.map((feat, i) => (
                   <div key={i} className="flex gap-6 group">
                     <div className="mt-1 w-12 h-12 rounded-xl bg-surface-raised border border-[rgba(240,236,228,0.06)] flex items-center justify-center group-hover:border-accent-stone/30 transition-colors">
                       {feat.icon}

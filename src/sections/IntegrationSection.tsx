@@ -1,41 +1,44 @@
 import ScrollReveal from '../components/ScrollReveal';
 import CodeBlock from '../components/CodeBlock';
 
-const integrationCode = `from vigil import Ember, Compass, Tide, Mirror
+const integrationCode = `from the_singularity import TheArc, TideStone, CompassStone, EmberStone, MirrorStone, Oracle, Spectre, Archive
+import time
 
 # Initialize once per user session
-ember = Ember(user_id="user_123")
-compass = Compass(user_id="user_123")
-tide = Tide()
-mirror = Mirror(user_id="user_123")
+arc = TheArc()
+tide = TideStone()
+compass = CompassStone()
+ember = EmberStone()
+mirror = MirrorStone()
+oracle = Oracle(the_arc=arc)
+spectre = Spectre(the_arc=arc)
+archive = Archive(the_arc=arc)
 
 def handle_turn(user_msg: str, system_prompt: str) -> str:
-    # 1. Observe the turn
-    tide.observe(user_msg)
-    compass.observe(user_msg)
+    # 1. ORACLE Routing
+    decision = oracle.route(user_msg)
     
-    # 2. Build awareness context
-    awareness = []
-    active_loops = ember.get_active_context()
-    if active_loops:
-        awareness.append(active_loops)
-    goal = compass.get_goal_directive()
-    if goal:
-        awareness.append(goal)
-    state = tide.get_state_directive()
-    if state:
-        awareness.append(state)
+    # 2. Build Awareness Context
+    additions = []
+    if ctx := arc.consult(user_msg): additions.append(ctx)
+    if d := tide.get_state_directive(): additions.append(d)
+    if d := compass.get_goal_directive(): additions.append(d)
+    if d := ember.get_active_context(): additions.append(d)
+    if d := archive.query(user_msg, depth="all"): additions.append(d)
     
-    # 3. Inject into your system prompt
-    if awareness:
-        system_prompt += "\\n\\n[Context]\\n" + "\\n".join(awareness)
+    # 3. SPECTRE Proactive Predictions
+    preds = spectre.predict_next([{"content": user_msg, "role": "user"}])
+    if preds: additions.append(spectre.get_proactive_prompt(preds))
     
-    # 4. Call your AI (OpenAI, Gemini, Ollama — anything)
-    response = your_llm.complete(system_prompt, user_msg)
+    # 4. Final System Prompt
+    system_prompt += "\\n\\n" + "\\n\\n".join(additions)
     
-    # 5. Post-turn observation
-    ember.observe(user_msg, response)
-    mirror.record(user_msg, response)
+    # 5. Call Chosen Model
+    response = call_llm(decision.primary_model, system_prompt, user_msg)
+    
+    # 6. Absorb the outcome
+    arc.absorb(TurnRecord(role="user", content=user_msg, timestamp=time.time()))
+    tide.observe_user(user_msg)
     return response`;
 
 export default function IntegrationSection() {
@@ -43,15 +46,14 @@ export default function IntegrationSection() {
     <section id="integration" className="bg-surface-void py-[120px] px-6">
       <div className="max-w-[800px] mx-auto">
         <ScrollReveal stagger={0.15}>
-          <p className="section-label text-accent-tide mb-6">05 / INTEGRATION</p>
+          <p className="section-label text-accent-stone mb-6">05 / INTEGRATION</p>
 
           <h2 className="font-display-section text-text-primary mb-8">
-            Drop It Into Any Pipeline
+            The Convergence Loop
           </h2>
 
           <p className="font-body-large text-text-secondary mb-12">
-            VIGIL is designed to be framework-agnostic. If your project has a conversation loop, VIGIL
-            fits in. No framework lock-in. No cloud dependency. No ML training required.
+            The Singularity integrates directly into your conversation loop. It doesn't replace your LLM — it gives it the <strong>contextual soul</strong> it needs to understand the human on the other side.
           </p>
         </ScrollReveal>
 
@@ -61,7 +63,7 @@ export default function IntegrationSection() {
 
         <ScrollReveal className="mt-6">
           <p className="font-body text-text-dim text-center">
-            That's the full integration. No pipeline changes. No framework migration.
+            Zero dependencies. Zero ML training. Just drop in the .py files and go.
           </p>
         </ScrollReveal>
       </div>

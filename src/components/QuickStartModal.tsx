@@ -11,18 +11,20 @@ export default function QuickStartModal({ isOpen, onClose }: QuickStartModalProp
 
   if (!isOpen) return null;
 
-  const codeExample = `from vigilstones.the_arc import TheArc, TurnRecord
-from vigilstones.tide_stone import TideStone
+  const codeExample = `from the_singularity import TheArc, Oracle, Spectre
+import time
 
 # 1. Initialize
-arc = TheArc(path="data/arc.json")
-tide = TideStone()
+arc = TheArc()
+oracle = Oracle(the_arc=arc)
+spectre = Spectre(the_arc=arc)
 
-# 2. Observe & Consult
-tide.observe_user("Hello Singularity")
-ctx = arc.consult("Hello Singularity")
+# 2. Route & Predict
+decision = oracle.route("User query here")
+preds = spectre.predict_next(arc.get_history())
 
-# 3. Generate with Awareness
+# 3. Contextual Awareness
+ctx = arc.consult("User query here")
 # system_prompt += f"\\n\\n{ctx}"`;
 
   const copyToClipboard = () => {
@@ -48,8 +50,8 @@ ctx = arc.consult("Hello Singularity")
               <Terminal size={18} className="text-[#0A0A0B]" />
             </div>
             <div>
-              <h3 className="font-display text-lg text-text-primary">Quick Start Guide</h3>
-              <p className="font-label text-[10px] text-text-dim uppercase tracking-widest">Minimal Integration</p>
+              <h3 className="font-display text-lg text-text-primary">The Singularity v1.0</h3>
+              <p className="font-label text-[10px] text-text-dim uppercase tracking-widest">Rapid Integration</p>
             </div>
           </div>
           <button 
@@ -67,9 +69,9 @@ ctx = arc.consult("Hello Singularity")
             <div className="flex gap-4">
               <div className="flex-shrink-0 w-6 h-6 rounded-full border border-accent-stone/30 flex items-center justify-center font-label text-xs text-accent-stone">1</div>
               <div>
-                <h4 className="font-label text-xs uppercase tracking-widest text-text-primary mb-2">Clone & Copy</h4>
+                <h4 className="font-label text-xs uppercase tracking-widest text-text-primary mb-2">Drop-in Modules</h4>
                 <p className="text-sm text-text-secondary leading-relaxed">
-                  Download the <code className="text-accent-stone bg-accent-stone/10 px-1 rounded">.py</code> modules from GitHub and drop them into your project's <code className="text-accent-stone bg-accent-stone/10 px-1 rounded">/vigilstones</code> directory.
+                  The Singularity is zero-dependency. Download the <code className="text-accent-stone bg-accent-stone/10 px-1 rounded">.py</code> files from the repository and drop them directly into your project root.
                 </p>
               </div>
             </div>
@@ -78,7 +80,7 @@ ctx = arc.consult("Hello Singularity")
             <div className="flex gap-4">
               <div className="flex-shrink-0 w-6 h-6 rounded-full border border-accent-stone/30 flex items-center justify-center font-label text-xs text-accent-stone">2</div>
               <div className="flex-1">
-                <h4 className="font-label text-xs uppercase tracking-widest text-text-primary mb-2">Minimal Implementation</h4>
+                <h4 className="font-label text-xs uppercase tracking-widest text-text-primary mb-2">Implementation</h4>
                 <div className="relative group">
                   <button 
                     onClick={copyToClipboard}
@@ -99,9 +101,9 @@ ctx = arc.consult("Hello Singularity")
             <div className="flex gap-4">
               <div className="flex-shrink-0 w-6 h-6 rounded-full border border-accent-stone/30 flex items-center justify-center font-label text-xs text-accent-stone">3</div>
               <div>
-                <h4 className="font-label text-xs uppercase tracking-widest text-text-primary mb-2">Go Deeper</h4>
+                <h4 className="font-label text-xs uppercase tracking-widest text-text-primary mb-2">Initialize Awareness</h4>
                 <p className="text-sm text-text-secondary leading-relaxed">
-                  Every stone is standalone. Use MirrorStone for confidence tracking or EmberStone for hot-topic awareness.
+                  Call the awareness layers before your LLM generation. Your assistant is now proactive, soulful, and context-aware.
                 </p>
               </div>
             </div>
@@ -111,7 +113,7 @@ ctx = arc.consult("Hello Singularity")
         {/* Footer */}
         <div className="p-6 bg-surface-raised/30 border-t border-[rgba(240,236,228,0.06)] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[11px] text-text-dim font-label italic italic-stone">
-            "Awareness is not a feature, it's a layer."
+            "Remembering the person, not just the data."
           </p>
           <a 
             href="https://github.com/codedbyOzzy/THESingularity/blob/master/INSTALLATION_GUIDE.md" 
@@ -119,7 +121,7 @@ ctx = arc.consult("Hello Singularity")
             rel="noopener noreferrer"
             className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-accent-stone text-[#0A0A0B] rounded-lg font-label text-xs uppercase tracking-widest hover:brightness-110 transition-all group"
           >
-            Read Full Guide on GitHub
+            Full Documentation
             <ExternalLink size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </div>
