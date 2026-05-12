@@ -16,7 +16,7 @@ const futureModules = [
   {
     id: 'spectre',
     title: 'SPECTRE',
-    subtitle: 'Proactive Context Synthesizer',
+    subtitle: 'Proactive Context Synthesizer — v1.0 Stable',
     description: 'The end of reactive AI. Spectre anticipates the user’s next logical step by synthesizing existing conversation arcs and persona patterns, preparing the context before the question is even asked.',
     icon: Eye,
     color: 'text-blue-400',
@@ -27,7 +27,7 @@ const futureModules = [
   {
     id: 'archive',
     title: 'ARCHIVE',
-    subtitle: 'Longitudinal User Memory',
+    subtitle: 'Longitudinal User Memory — v1.0 Stable',
     description: 'Beyond session-based history. Archive builds a hierarchical, emotional profile of the user across months and years, remembering not just data, but how the interaction felt.',
     icon: Archive,
     color: 'text-indigo-400',
@@ -47,9 +47,9 @@ export default function EvolutionSection() {
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
           <div className="text-center mb-20">
-            <h2 className="font-display-section text-text-primary mb-4">The Next Evolution</h2>
+            <h2 className="font-display-section text-text-primary mb-4">The Evolution Complete</h2>
             <p className="font-body-large text-text-secondary max-w-2xl mx-auto italic">
-              "We are moving from reactive awareness toward proactive intelligence. The Singularity is expanding."
+              "We have moved from reactive awareness toward proactive intelligence. The Singularity is now fully operational."
             </p>
           </div>
         </ScrollReveal>
@@ -79,8 +79,8 @@ export default function EvolutionSection() {
 
                 {/* Status Badge */}
                 <div className="absolute top-4 right-4">
-                  <span className="px-2 py-1 rounded bg-white/5 border border-white/10 text-[8px] font-label text-accent-stone uppercase tracking-tighter">
-                    {module.id === 'oracle' ? 'v1.0 Stable' : 'In Development'}
+                  <span className="px-2 py-1 rounded bg-accent-stone/10 border border-accent-stone/20 text-[8px] font-label text-accent-stone uppercase tracking-tighter">
+                    v1.0 Stable
                   </span>
                 </div>
               </div>
@@ -91,7 +91,7 @@ export default function EvolutionSection() {
         <ScrollReveal delay={0.6}>
           <div className="mt-16 p-8 rounded-2xl border border-white/5 bg-surface-deep/30 text-center">
             <p className="font-body-small text-text-dim max-w-3xl mx-auto">
-              These modules represent the <strong>Singularity v2.0 Roadmap</strong>. They leverage the core narrative power of THE ARC and the real-time awareness of VIGIL to create an AI ecosystem that doesn't just respond, but genuinely understands the moment.
+              The <strong>Singularity v1.0 Ecosystem</strong> is now complete. By integrating narrative soul, intelligence routing, and real-time awareness, we have created the most advanced open-source awareness layer for AI assistants.
             </p>
           </div>
         </ScrollReveal>
