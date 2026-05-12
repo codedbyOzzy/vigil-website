@@ -5,7 +5,7 @@ const futureModules = [
   {
     id: 'oracle',
     title: 'ORACLE',
-    subtitle: 'Intelligent Model Router',
+    subtitle: 'Intelligent Model Router — v1.0 Stable',
     description: 'Dynamic turn-by-turn model selection. Oracle analyzes query complexity and topic depth to route requests to the most efficient LLM—optimizing for speed, cost, and quality simultaneously.',
     icon: Cpu,
     color: 'text-purple-400',
@@ -80,7 +80,7 @@ export default function EvolutionSection() {
                 {/* Status Badge */}
                 <div className="absolute top-4 right-4">
                   <span className="px-2 py-1 rounded bg-white/5 border border-white/10 text-[8px] font-label text-accent-stone uppercase tracking-tighter">
-                    In Development
+                    {module.id === 'oracle' ? 'v1.0 Stable' : 'In Development'}
                   </span>
                 </div>
               </div>
