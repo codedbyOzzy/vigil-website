@@ -1,13 +1,19 @@
 interface ModuleCardProps {
   emoji: string;
   name: string;
-  status: 'design' | 'progress' | 'planned';
+  status: 'design' | 'progress' | 'planned' | 'done';
   quote?: string;
   description: string;
   image: string;
 }
 
 const statusConfig = {
+  done: {
+    label: 'v1.0 Stable',
+    bg: 'rgba(240, 236, 228, 0.1)',
+    text: '#F0ECE4',
+    border: 'rgba(240, 236, 228, 0.3)',
+  },
   design: {
     label: 'Design Complete',
     bg: 'rgba(107, 143, 113, 0.15)',
@@ -33,7 +39,7 @@ export default function ModuleCard({ emoji, name, status, quote, description, im
 
   return (
     <div
-      className="relative bg-surface-deep border border-[rgba(240,236,228,0.06)] rounded-2xl p-10 md:p-12 overflow-hidden group transition-all duration-400 hover:-translate-y-1 hover:shadow-glow hover:border-accent-ember/30"
+      className="relative bg-surface-deep border border-[rgba(240,236,228,0.06)] rounded-2xl p-10 md:p-12 overflow-hidden group transition-all duration-400 hover:-translate-y-1 hover:shadow-glow hover:border-accent-stone/30"
     >
       {/* Background image */}
       <div
@@ -59,7 +65,7 @@ export default function ModuleCard({ emoji, name, status, quote, description, im
         </div>
 
         {quote && (
-          <p className="font-body-large text-text-secondary italic mt-4">
+          <p className="font-body-large text-text-secondary italic mt-4 opacity-80 border-l-2 border-accent-stone/30 pl-4">
             "{quote}"
           </p>
         )}
